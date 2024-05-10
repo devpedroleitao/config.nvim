@@ -12,3 +12,5 @@ Need to run:
 5. Copy the fonts folder content into C:/Windows/Fonts
 6. On Windows Terminal edit the current font and select JetbrainsMono
 7. On Windows Terminal actions remove the CTRL+V to paste. Instead we always use CTRL+SHIFT+V to paste because Vim usese CTRL+V to Visual Block Mode.
+8. Update git core editor
+-- git config --global --add core.editor "nvim"
