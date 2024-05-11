@@ -14,3 +14,5 @@ Need to run:
 7. On Windows Terminal actions remove the CTRL+V to paste. Instead we always use CTRL+SHIFT+V to paste because Vim usese CTRL+V to Visual Block Mode.
 8. Update git core editor
 -- git config --global --add core.editor "nvim"
+9. Add ~/.local/bin to $PATH
+10. Cp tmux-sessionizer and cht.sh to ~/.local/bin
