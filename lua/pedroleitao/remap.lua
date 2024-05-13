@@ -24,7 +24,9 @@ vim.keymap.set("v", "<leader>d", "\"_d")
 -- vim.keymap.set("n", "Q", "<nop>")
 -- TMUX SETTINGS
 vim.keymap.set("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>")
-vim.keymap.set("n", "<leader><C-R>", "<cmd>silent !tmux neww ./scripts/run.sh start<CR>")
+vim.keymap.set("n", "<leader><C-R>", "<cmd>silent !tmux neww -d ./scripts/run.sh start<CR>")
+vim.keymap.set("n", "<leader><C-I>", "<cmd>silent !tmux neww -d ./scripts/run.sh install<CR>")
+
 vim.keymap.set("n", "<leader>f", function()
     vim.lsp.buf.format()
 end)
