@@ -9,7 +9,6 @@ local conform = require('conform')
 neodev.setup({
     -- add any options here, or leave empty to use the default settings
 })
-
 lsp_zero.on_attach(function(client, bufnr)
     -- see :help lsp-zero-keybindings
     -- to learn the available actions
@@ -29,8 +28,8 @@ lsp_zero.on_attach(function(client, bufnr)
     vim.keymap.set("n", "<leader>vrn", function() vim.lsp.buf.rename() end, opts)
     vim.keymap.set("i", "<C-h>", function() vim.lsp.buf.signature_help() end, opts)
 
-    vim.keymap.set({'n', 'x'}, 'gq', function()
-        conform.format({ bufnr = opts.buffer, lsp_fallback = true})
+    vim.keymap.set({ 'n', 'x' }, 'gq', function()
+        conform.format({ bufnr = opts.buffer, lsp_fallback = true })
     end, opts)
 
     local cmp = require('cmp')
@@ -97,7 +96,7 @@ mason_lspconfig.setup({
                 filetypes = { 'typescript', 'html', 'typescriptreact', 'typescript.tsx', 'css', 'scss', 'angular.html' },
             })
         end,
-        ansiblels = function ()
+        ansiblels = function()
             lspconfig.ansiblels.setup({
                 settings = {
                     ansible = {
@@ -121,6 +120,11 @@ mason_lspconfig.setup({
                 }
             })
         end,
+        docker_compose_language_service = function()
+            lspconfig.docker_compose_language_service.setup({
+                filetypes = { 'yaml.docker-compose' }
+            })
+        end,
 
     },
 })
@@ -132,3 +136,17 @@ lsp_signature.setup({
     },
     close_timeout = 1000
 })
+
+vim.filetype.add({
+    pattern = {
+        [".*docker-compose.*"]= "yaml.docker-compose",             -- sets the filetype to `angular.html` if it matches the pattern
+    },
+})
+
+vim.api.nvim_create_autocmd("filetype", {
+    pattern = "yaml.docker-compose",
+    callback = function()
+        vim.treesitter.language.register("yaml", "yaml.docker-compose")             -- register the filetype with treesitter for the `angular` language/parser
+    end,
+})
+
