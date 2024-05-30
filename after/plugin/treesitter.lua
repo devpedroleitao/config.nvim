@@ -26,16 +26,16 @@ require'nvim-treesitter.configs'.setup {
     additional_vim_regex_highlighting = false,
   },
 }
-vim.api.nvim_create_autocmd("BufEnter", {
-  callback = function()
-    if vim.opt.foldmethod:get() == "expr" then
-      vim.schedule(function()
-        vim.opt.foldmethod = "expr"
-      end)
-    end
-  end,
-})
+-- vim.api.nvim_create_autocmd("BufEnter", {
+--   callback = function()
+--     if vim.opt.foldmethod:get() == "expr" then
+--       vim.schedule(function()
+--         vim.opt.foldmethod = "expr"
+--       end)
+--     end
+--   end,
+-- })
 
-vim.opt.foldenable = false
-vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
-vim.opt.foldmethod = "expr"
+-- vim.opt.foldenable = false
+-- vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+-- vim.opt.foldmethod = "expr"
