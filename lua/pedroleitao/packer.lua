@@ -29,6 +29,7 @@ return require('packer').startup(function(use)
 
     use('folke/neodev.nvim')
 
+    use('WhoIsSethDaniel/mason-tool-installer.nvim')
 
 	use {
 		'VonHeikemen/lsp-zero.nvim',

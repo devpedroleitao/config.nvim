@@ -52,7 +52,15 @@ mason.setup({})
 mason_lspconfig.setup({
     -- Replace the language servers listed here
     -- with the ones you want to install
-    ensure_installed = {},
+    ensure_installed = {
+        "tsserver",
+        "eslint",
+        "lua_ls",
+        "angularls@16.2.0",
+        "ansiblels",
+        "docker_compose_language_service",
+        "dockerls",
+    },
     handlers = {
         function(server_name)
             lspconfig[server_name].setup({})
