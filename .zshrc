@@ -1,7 +1,7 @@
 # If you come from bash you might have to change your $PATH.
 export PATH=$HOME/bin:/usr/local/bin:$PATH
 export PATH=$HOME/.local/bin:$PATH
-
+export PATH=$PATH:/usr/local/go/bin
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 
@@ -132,7 +132,9 @@ agent_start () {
 
 		unset env
 
+#Aliases List
 alias vim='nvim'
+alias cat='bat'
 
 # Load Angular CLI autocompletion.
 source <(ng completion script)
@@ -147,3 +149,5 @@ eval "$(fzf --zsh)"
 
 bindkey -s ^f "tmux-sessionizer\n"
 bindkey -s '^r^r' "tmux neww -d ./scripts/run.sh start\n"
+
+bindkey -s ^s "search-files\n"

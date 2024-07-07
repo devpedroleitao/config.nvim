@@ -5,6 +5,7 @@ local mason = require('mason')
 local mason_lspconfig = require('mason-lspconfig')
 local lsp_signature = require('lsp_signature')
 local conform = require('conform')
+local jdtls = require('jdtls')
 
 neodev.setup({
     -- add any options here, or leave empty to use the default settings
@@ -60,6 +61,7 @@ mason_lspconfig.setup({
         "ansiblels",
         "docker_compose_language_service",
         "dockerls",
+        "jdtls",
     },
     handlers = {
         function(server_name)
@@ -133,7 +135,17 @@ mason_lspconfig.setup({
                 filetypes = { 'yaml.docker-compose' }
             })
         end,
-
+        jdtls = noop,
+        -- jdtls = function()
+        --     lspconfig.jdtls.setup({
+        --         capabilities = jdtls.capabilities,
+        --         init_options = {
+        --             extendedClientCapabilities = {
+        --                 classFileContentsSupport = true
+        --             }
+        --         }
+        --     })
+        -- end,
     },
 })
 

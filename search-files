@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+fzf --preview 'bat --style=numbers --color=always --line-range :500 {}' \
+    --bind 'ctrl-d:preview-half-page-down' \
+    --bind 'ctrl-u:preview-half-page-up' \
+    --bind 'ctrl-f:preview-page-down' \
+    --bind 'ctrl-b:preview-page-up' \
+    --bind 'down:preview-down' \
+    --bind 'up:preview-up'

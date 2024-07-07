@@ -5,6 +5,7 @@ vim.cmd [[packadd packer.nvim]]
 
 return require('packer').startup(function(use)
     -- Packer can manage itself
+    use 'mfussenegger/nvim-jdtls'
     use 'wbthomason/packer.nvim'
     use 'laytan/cloak.nvim'
     use 'tpope/vim-surround'
