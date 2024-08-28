@@ -57,7 +57,7 @@ mason_lspconfig.setup({
         "tsserver",
         "eslint",
         "lua_ls",
-        "angularls@16.2.0",
+        "angularls",
         "ansiblels",
         "docker_compose_language_service",
         "dockerls",
@@ -135,6 +135,15 @@ mason_lspconfig.setup({
                 filetypes = { 'yaml.docker-compose' }
             })
         end,
+        eslint = function()
+            lspconfig.eslint.setup({
+                settings = {
+                    experimental = {
+                        useFlatConfig = true
+                    },
+                }
+            })
+        end,
         jdtls = noop,
         -- jdtls = function()
         --     lspconfig.jdtls.setup({
@@ -159,14 +168,13 @@ lsp_signature.setup({
 
 vim.filetype.add({
     pattern = {
-        [".*docker-compose.*"]= "yaml.docker-compose",             -- sets the filetype to `angular.html` if it matches the pattern
+        [".*docker-compose.*"] = "yaml.docker-compose", -- sets the filetype to `angular.html` if it matches the pattern
     },
 })
 
 vim.api.nvim_create_autocmd("filetype", {
     pattern = "yaml.docker-compose",
     callback = function()
-        vim.treesitter.language.register("yaml", "yaml.docker-compose")             -- register the filetype with treesitter for the `angular` language/parser
+        vim.treesitter.language.register("yaml", "yaml.docker-compose") -- register the filetype with treesitter for the `angular` language/parser
     end,
 })
-

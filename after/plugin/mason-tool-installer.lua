@@ -6,7 +6,7 @@ require('mason-tool-installer').setup {
     -- you can pin a tool to a particular version
     -- { 'golangci-lint', version = 'v1.47.0' },
 
-    { 'angular-language-server', version = '16.2.0' },
+    -- { 'angular-language-server', '16.2.0' },
     'ansible-language-server',
     'ansible-lint',
     'docker-compose-language-service',
