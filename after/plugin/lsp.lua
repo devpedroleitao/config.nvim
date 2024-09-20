@@ -5,7 +5,6 @@ local mason = require('mason')
 local mason_lspconfig = require('mason-lspconfig')
 local lsp_signature = require('lsp_signature')
 local conform = require('conform')
-local jdtls = require('jdtls')
 
 neodev.setup({
     -- add any options here, or leave empty to use the default settings
@@ -99,6 +98,11 @@ mason_lspconfig.setup({
                         },
                     },
                 },
+            })
+        end,
+        emmet_ls = function()
+            lspconfig.emmet_ls.setup({
+                filetypes = { 'html', 'angular.html' },
             })
         end,
         angularls = function()

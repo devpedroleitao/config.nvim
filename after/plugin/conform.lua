@@ -9,6 +9,7 @@ conform.setup({
     ['typescript'] = { { "prettierd", "prettier" } },
     ['angular.html'] = { { "prettierd", "prettier" } },
     html = { "prettierd", "prettier" },
+    sccs = { "prettierd", "prettier" },
   },
 });
 

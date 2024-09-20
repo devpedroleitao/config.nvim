@@ -44,6 +44,9 @@ return require('packer').startup(function(use)
             {'hrsh7th/nvim-cmp'},
             { 'hrsh7th/cmp-nvim-lsp' },
             { 'L3MON4D3/LuaSnip' },
+            { 'aca/emmet-ls' },
+            { 'hrsh7th/vscode-langservers-extracted' },
+            { 'wkillerud/some-sass/tree/main/packages/language-server' },
         }
     }
 
