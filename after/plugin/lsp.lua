@@ -53,7 +53,7 @@ mason_lspconfig.setup({
     -- Replace the language servers listed here
     -- with the ones you want to install
     ensure_installed = {
-        "ts_ls",
+        "tsserver",
         "eslint",
         "lua_ls",
         "angularls",
@@ -66,8 +66,8 @@ mason_lspconfig.setup({
         function(server_name)
             lspconfig[server_name].setup({})
         end,
-        ts_ls = function()
-            lspconfig.ts_ls.setup({
+        tsserver= function()
+            lspconfig.tsserver.setup({
                 capabilities = {
                     renameProvider = false
                 },
