@@ -1,16 +1,16 @@
 local conform = require('conform');
 conform.setup({
-  formatters_by_ft = {
-    lua = { "stylua" },
-    -- Conform will run multiple formatters sequentially
-    python = { "isort", "black" },
-    -- Use a sub-list to run only the first available formatter
-    javascript = { { "prettierd", "prettier" } },
-    ['typescript'] = { { "prettierd", "prettier" } },
-    ['angular.html'] = { { "prettierd", "prettier" } },
-    html = { "prettierd", "prettier" },
-    sccs = { "prettierd", "prettier" },
-  },
+    formatters_by_ft = {
+        lua = { "stylua" },
+        -- Conform will run multiple formatters sequentially
+        python = { "isort", "black" },
+        -- Use a sub-list to run only the first available formatter
+        javascript = { "prettierd", "prettier", stop_after_first = true },
+        ['typescript'] = { "prettierd", "prettier", stop_after_first = true },
+        ['angular.html'] = {  "prettierd", "prettier", stop_after_first = true },
+        html = { "prettierd", "prettier" },
+        sccs = { "prettierd", "prettier" },
+    },
 });
 
 
@@ -24,4 +24,3 @@ conform.formatters.prettier = {
         ['angular.html'] = 'html',
     }
 }
-

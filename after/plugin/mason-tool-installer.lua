@@ -12,10 +12,8 @@ require('mason-tool-installer').setup {
     'docker-compose-language-service',
     'dockerfile-language-server',
     'eslint-lsp',
-    'tsserver',
     'prettierd',
     'prettier',
-
   },
 
   -- if set to true this will check each tool for updates. If updates
