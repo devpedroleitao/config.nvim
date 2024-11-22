@@ -14,7 +14,6 @@ require('mason-tool-installer').setup {
     'eslint-lsp',
     'prettierd',
     'prettier',
-
   },
 
   -- if set to true this will check each tool for updates. If updates

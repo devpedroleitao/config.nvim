@@ -58,11 +58,16 @@ mason_lspconfig.setup({
     ensure_installed = {
         "eslint",
         "lua_ls",
+        "emmet_ls",
         "angularls",
         "ansiblels",
         "docker_compose_language_service",
+        "eslint",
         "dockerls",
         "jdtls",
+        "cssls",
+        "somesass_ls",
+        "yamlls"
     },
     handlers = {
         function(server_name)

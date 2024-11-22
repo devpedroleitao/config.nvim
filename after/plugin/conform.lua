@@ -24,4 +24,3 @@ conform.formatters.prettier = {
         ['angular.html'] = 'html',
     }
 }
-

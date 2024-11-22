@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-session=$(find ~ ~/workspace ~/.config ~/workspace/training/git -mindepth 1 -maxdepth 1 -type d | fzf)
+session=$((find ~/workspace ~/workspace/platform ~/workspace/core ~/workspace/gls-office -mindepth 1 -maxdepth 1 -type d && find /tmp ~/.config/nvim -maxdepth 0 -type d) | fzf)
 session_name=$(basename "$session" | tr . _)
 
 tmux_running=$(pgrep tmux)
