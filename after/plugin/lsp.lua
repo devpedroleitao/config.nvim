@@ -6,9 +6,11 @@ local mason_lspconfig = require('mason-lspconfig')
 local lsp_signature = require('lsp_signature')
 local conform = require('conform')
 
+
 neodev.setup({
     -- add any options here, or leave empty to use the default settings
 })
+
 lsp_zero.on_attach(function(client, bufnr)
     -- see :help lsp-zero-keybindings
     -- to learn the available actions
@@ -28,9 +30,10 @@ lsp_zero.on_attach(function(client, bufnr)
     vim.keymap.set("n", "<leader>vrn", function() vim.lsp.buf.rename() end, opts)
     vim.keymap.set("i", "<C-h>", function() vim.lsp.buf.signature_help() end, opts)
 
-    vim.keymap.set({ 'n', 'x' }, 'gq', function()
+    vim.keymap.set({ 'n', 'x', 'v' }, 'gq', function()
         conform.format({ bufnr = opts.buffer, lsp_fallback = true })
     end, opts)
+
 
     local cmp = require('cmp')
     cmp.setup({
@@ -53,7 +56,6 @@ mason_lspconfig.setup({
     -- Replace the language servers listed here
     -- with the ones you want to install
     ensure_installed = {
-        "tsserver",
         "eslint",
         "lua_ls",
         "angularls",
@@ -65,29 +67,6 @@ mason_lspconfig.setup({
     handlers = {
         function(server_name)
             lspconfig[server_name].setup({})
-        end,
-        tsserver= function()
-            lspconfig.tsserver.setup({
-                capabilities = {
-                    renameProvider = false
-                },
-                commands = {
-                    OrganizeImports = {
-                        function()
-                            local params = {
-                                command = "_typescript.organizeImports",
-                                arguments = { vim.api.nvim_buf_get_name(0) },
-                                title = ""
-                            }
-                            vim.lsp.buf.execute_command(params)
-                        end
-                    }
-                },
-                on_attach = function(client, bufnr)
-                    local opts = { buffer = bufnr, remap = false }
-                    vim.keymap.set("n", "<leader>oi", ':OrganizeImports<CR>', opts)
-                end,
-            })
         end,
         lua_ls = function()
             lspconfig.lua_ls.setup({
@@ -147,18 +126,7 @@ mason_lspconfig.setup({
                     },
                 }
             })
-        end,
-        jdtls = noop,
-        -- jdtls = function()
-        --     lspconfig.jdtls.setup({
-        --         capabilities = jdtls.capabilities,
-        --         init_options = {
-        --             extendedClientCapabilities = {
-        --                 classFileContentsSupport = true
-        --             }
-        --         }
-        --     })
-        -- end,
+        end
     },
 })
 
