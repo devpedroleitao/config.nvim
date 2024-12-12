@@ -75,6 +75,7 @@ mason_lspconfig.setup({
                 capabilities = {
                     renameProvider = false
                 },
+                filetypes = { 'javascript','jsonc','typescript', 'html', 'typescriptreact', 'typescript.tsx', 'css', 'scss', 'angular.html' },
                 commands = {
                     OrganizeImports = {
                         function()
@@ -85,7 +86,22 @@ mason_lspconfig.setup({
                             }
                             vim.lsp.buf.execute_command(params)
                         end
-                    }
+                    },
+                    GoToSourceDefinition = {
+                        function()
+                            local params = {
+                                command = "_typescript.goToSourceDefinition",
+                                arguments = {
+                                    vim.uri_from_bufnr(0),
+                                    {
+                                        line = vim.fn.line('.') - 1,
+                                        character = vim.fn.col('.') -1
+                                    }
+                                }
+                            }
+                            vim.lsp.buf.execute_command(params)
+                        end
+                    },
                 },
                 on_attach = function(client, bufnr)
                     local opts = { buffer = bufnr, remap = false }
