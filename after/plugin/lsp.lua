@@ -67,49 +67,36 @@ mason_lspconfig.setup({
         "jdtls",
         "cssls",
         "somesass_ls",
-        "yamlls"
+        "yamlls",
+        "bashls",
+        "snyk_ls",
     },
     handlers = {
         function(server_name)
             lspconfig[server_name].setup({})
         end,
-        ts_ls= function()
+        ts_ls = function()
             lspconfig.ts_ls.setup({
                 capabilities = {
                     renameProvider = false
                 },
-                filetypes = { 'javascript','jsonc','typescript', 'html', 'typescriptreact', 'typescript.tsx', 'css', 'scss', 'angular.html' },
-                commands = {
-                    OrganizeImports = {
-                        function()
-                            local params = {
-                                command = "_typescript.organizeImports",
-                                arguments = { vim.api.nvim_buf_get_name(0) },
-                                title = ""
-                            }
-                            vim.lsp.buf.execute_command(params)
-                        end
-                    },
-                    GoToSourceDefinition = {
-                        function()
-                            local params = {
-                                command = "_typescript.goToSourceDefinition",
-                                arguments = {
-                                    vim.uri_from_bufnr(0),
-                                    {
-                                        line = vim.fn.line('.') - 1,
-                                        character = vim.fn.col('.') -1
-                                    }
-                                }
-                            }
-                            vim.lsp.buf.execute_command(params)
-                        end
-                    },
+                filetypes = { 'javascript', 'jsonc', 'typescript', 'html', 'typescriptreact', 'typescript.tsx', 'css', 'scss', 'angular.html' },
+            })
+        end,
+        snyk_ls = function()
+            lspconfig.snyk_ls.setup({
+                init_options = {
+                    integrationName = "NEOVIM",
+                    authenticationMethod = "token",
+                    token = os.getenv("SNYK_TOKEN"),
+                    activateSnykOpenSource = "false",
+                    activateSnykCode = "true",
                 },
-                on_attach = function(client, bufnr)
-                    local opts = { buffer = bufnr, remap = false }
-                    vim.keymap.set("n", "<leader>oi", ':OrganizeImports<CR>', opts)
-                end,
+            })
+        end,
+        bashls = function()
+            lspconfig.bashls.setup({
+                filetypes = { 'sh', 'bash' },
             })
         end,
         lua_ls = function()
