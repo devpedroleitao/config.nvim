@@ -50,7 +50,6 @@ return require('packer').startup(function(use)
             { 'L3MON4D3/LuaSnip' },
             { 'aca/emmet-ls' },
             { 'hrsh7th/vscode-langservers-extracted' },
-            { 'wkillerud/some-sass/tree/main/packages/language-server' },
         }
     }
 
@@ -125,6 +124,8 @@ return require('packer').startup(function(use)
     --         })
     --     end,
     -- }
+    --
+    use({'ckipp01/nvim-jenkinsfile-linter', requires = { "nvim-lua/plenary.nvim" } })
     use {
         'github/copilot.vim',
     }

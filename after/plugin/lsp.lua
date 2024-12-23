@@ -67,11 +67,29 @@ mason_lspconfig.setup({
         "jdtls",
         "cssls",
         "somesass_ls",
-        "yamlls"
+        "yamlls",
+        "bashls",
+        "snyk_ls",
     },
     handlers = {
         function(server_name)
             lspconfig[server_name].setup({})
+        end,
+        snyk_ls = function()
+            lspconfig.snyk_ls.setup({
+                init_options = {
+                    integrationName = "NEOVIM",
+                    authenticationMethod = "token",
+                    token = os.getenv("SNYK_TOKEN"),
+                    activateSnykOpenSource = "false",
+                    activateSnykCode = "true",
+                },
+            })
+        end,
+        bashls = function()
+            lspconfig.bashls.setup({
+                filetypes = { 'sh', 'bash' },
+            })
         end,
         lua_ls = function()
             lspconfig.lua_ls.setup({
