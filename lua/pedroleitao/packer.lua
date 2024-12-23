@@ -12,18 +12,22 @@ return require('packer').startup(function(use)
     use {
         'nvim-telescope/telescope.nvim', tag = '0.1.6',
         -- or                            , branch = '0.1.x',
-        requires = { {'nvim-lua/plenary.nvim'} }
+        requires = { { 'nvim-lua/plenary.nvim' } }
     }
     use { "ellisonleao/gruvbox.nvim" }
     use {
         'nvim-treesitter/nvim-treesitter',
         run = ':TSUpdate'
     }
+    use {
+        "pmizio/typescript-tools.nvim",
+        requires = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
+    }
     use "nvim-lua/plenary.nvim" -- don't forget to add this one if you don't have it yet!
     use {
         "ThePrimeagen/harpoon",
         branch = "harpoon2",
-        requires = { {"nvim-lua/plenary.nvim"} }
+        requires = { { "nvim-lua/plenary.nvim" } }
     }
     use('mbbill/undotree')
     use('tpope/vim-fugitive')
@@ -32,21 +36,20 @@ return require('packer').startup(function(use)
 
     use('WhoIsSethDaniel/mason-tool-installer.nvim')
 
-	use {
-		'VonHeikemen/lsp-zero.nvim',
-		branch = 'v3.x',
-		requires = {
-			--- Uncomment the two plugins below if you want to manage the language servers from neovim
-			{'williamboman/mason.nvim'},
-			{'williamboman/mason-lspconfig.nvim'},
+    use {
+        'VonHeikemen/lsp-zero.nvim',
+        branch = 'v3.x',
+        requires = {
+            --- Uncomment the two plugins below if you want to manage the language servers from neovim
+            { 'williamboman/mason.nvim' },
+            { 'williamboman/mason-lspconfig.nvim' },
 
-            {'neovim/nvim-lspconfig'},
-            {'hrsh7th/nvim-cmp'},
+            { 'neovim/nvim-lspconfig' },
+            { 'hrsh7th/nvim-cmp' },
             { 'hrsh7th/cmp-nvim-lsp' },
             { 'L3MON4D3/LuaSnip' },
             { 'aca/emmet-ls' },
             { 'hrsh7th/vscode-langservers-extracted' },
-            { 'wkillerud/some-sass/tree/main/packages/language-server' },
         }
     }
 
@@ -97,40 +100,43 @@ return require('packer').startup(function(use)
         requires = { 'nvim-tree/nvim-web-devicons', opt = true }
     }
 
+    -- use {
+    --     "zbirenbaum/copilot.lua",
+    --     cmd = "Copilot",
+    --     event = "InsertEnter",
+    --     config = function()
+    --         require("copilot").setup({
+    --             panel = {
+    --                 keymap = {
+    --                     open = "<C-Space>p",
+    --                     jump_prev = "<C-p>",
+    --                     jump_next = "<C-n>"
+    --                 }
+    --             },
+    --             suggestion = {
+    --                 auto_trigger = true,
+    --                 keymap = {
+    --                     accept = "<C-y>",
+    --                     next = "<C-n>",
+    --                     prev = "<C-p>",
+    --                 }
+    --             }
+    --         })
+    --     end,
+    -- }
     use {
-        "zbirenbaum/copilot.lua",
-        cmd = "Copilot",
-        event = "InsertEnter",
-        config = function()
-            require("copilot").setup({
-                panel = {
-                    keymap = {
-                        open = "<C-Space>p",
-                        jump_prev = "<C-p>",
-                        jump_next = "<C-n>"
-                    }
-                },
-                suggestion = {
-                    auto_trigger = true,
-                    keymap = {
-                        accept = "<C-y>",
-                        next = "<C-n>",
-                        prev = "<C-p>",
-                    }
-                }
-            })
-        end,
+        'github/copilot.vim',
     }
 
     use {
         "CopilotC-Nvim/CopilotChat.nvim",
-        branch = "canary",
+        branch = "main",
         requires = {
-            { "zbirenbaum/copilot.lua" }, -- or github/copilot.vim
+            -- { "zbirenbaum/copilot.lua" }, -- or github/copilot.vim
+            { 'github/copilot.vim' },
             { "nvim-lua/plenary.nvim" }, -- for curl, log wrapper
         },
     }
 
     use { 'tpope/vim-commentary' }
-
 end)

@@ -6,9 +6,11 @@ local mason_lspconfig = require('mason-lspconfig')
 local lsp_signature = require('lsp_signature')
 local conform = require('conform')
 
+
 neodev.setup({
     -- add any options here, or leave empty to use the default settings
 })
+
 lsp_zero.on_attach(function(client, bufnr)
     -- see :help lsp-zero-keybindings
     -- to learn the available actions
@@ -28,9 +30,10 @@ lsp_zero.on_attach(function(client, bufnr)
     vim.keymap.set("n", "<leader>vrn", function() vim.lsp.buf.rename() end, opts)
     vim.keymap.set("i", "<C-h>", function() vim.lsp.buf.signature_help() end, opts)
 
-    vim.keymap.set({ 'n', 'x' }, 'gq', function()
+    vim.keymap.set({ 'n', 'x', 'v' }, 'gq', function()
         conform.format({ bufnr = opts.buffer, lsp_fallback = true })
     end, opts)
+
 
     local cmp = require('cmp')
     cmp.setup({
@@ -53,7 +56,7 @@ mason_lspconfig.setup({
     -- Replace the language servers listed here
     -- with the ones you want to install
     ensure_installed = {
-        "ts_ls",
+        "eslint",
         "lua_ls",
         "emmet_ls",
         "angularls",
@@ -167,18 +170,7 @@ mason_lspconfig.setup({
                     },
                 }
             })
-        end,
-        jdtls = noop,
-        -- jdtls = function()
-        --     lspconfig.jdtls.setup({
-        --         capabilities = jdtls.capabilities,
-        --         init_options = {
-        --             extendedClientCapabilities = {
-        --                 classFileContentsSupport = true
-        --             }
-        --         }
-        --     })
-        -- end,
+        end
     },
 })
 
