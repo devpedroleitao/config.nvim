@@ -125,7 +125,6 @@ return require('packer').startup(function(use)
     --     end,
     -- }
     --
-    use({'ckipp01/nvim-jenkinsfile-linter', requires = { "nvim-lua/plenary.nvim" } })
     use {
         'github/copilot.vim',
     }
