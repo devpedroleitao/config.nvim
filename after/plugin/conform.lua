@@ -10,7 +10,14 @@ conform.setup({
     ['angular.html'] = { "prettierd", "prettier", stop_after_firsty = true },
     html = { "prettierd", "prettier", stop_after_first = true },
     sccs = { "prettierd", "prettier", stop_after_first = true },
+    groovy = { "npm-groovy-lint" }
   },
+   formatter_config = {
+        npm_groovy_lint = {
+            command = 'npm-groovy-lint',
+            args = {'--fix'},
+        }
+    }
 });
 
 

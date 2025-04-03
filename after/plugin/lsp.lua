@@ -55,6 +55,7 @@ mason.setup({})
 mason_lspconfig.setup({
     -- Replace the language servers listed here
     -- with the ones you want to install
+    automatic_installation = true,
     ensure_installed = {
         "eslint",
         "lua_ls",
@@ -69,7 +70,7 @@ mason_lspconfig.setup({
         "somesass_ls",
         "yamlls",
         "bashls",
-        "snyk_ls",
+        -- "snyk_ls",
     },
     handlers = {
         function(server_name)
@@ -157,7 +158,12 @@ mason_lspconfig.setup({
                     },
                 }
             })
-        end
+        end,
+        groovyls = function()
+            lspconfig.groovyls.setup({
+                cmd = { "java", "-jar", "/home/pedro/.local/lib/groovy-language-server-all.jar" },
+            })
+        end,
     },
 })
 

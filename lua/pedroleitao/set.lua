@@ -1,4 +1,6 @@
-vim.opt.guicursor = ""
+vim.opt.guicursor = "n-v-c:block-Cursor/lCursor-blinkon0,i-ci-ve:ver25-Cursor/lCursor,r-cr:hor20-Cursor/lCursor"
+
+vim.opt.ignorecase = true
 
 vim.opt.number = true
 vim.opt.relativenumber = true

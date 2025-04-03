@@ -13,7 +13,7 @@ vim.keymap.set('n', '<C-p>',
     end
     , {})
 vim.keymap.set('n', '<leader>ps', function()
-    builtin.grep_string({ search = vim.fn.input("Grep > ") });
+    builtin.grep_string({ search = vim.fn.input("Grep > "), use_regex = true });
 end)
 vim.keymap.set('n', '<leader>psh',
     '<CMD>Telescope live_grep vimgrep_arguments=rg,--color=never,--no-heading,--no-heading,--line-number,--column,--smart-case,--hidden,--no-ignore<CR>')
