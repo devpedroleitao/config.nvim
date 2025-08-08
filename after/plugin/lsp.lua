@@ -84,7 +84,6 @@ mason_lspconfig.setup({
         "somesass_ls",
         "yamlls",
         "bashls",
-        -- "snyk_ls",
     },
     handlers = {
         function(server_name)
@@ -132,7 +131,9 @@ mason_lspconfig.setup({
         end,
         angularls = function()
             lspconfig.angularls.setup({
+                -- root_dir = lspconfig.util.root_pattern(".git"),
                 filetypes = { 'typescript', 'html', 'typescriptreact', 'typescript.tsx', 'css', 'scss', 'angular.html' },
+
             })
         end,
         ansiblels = function()

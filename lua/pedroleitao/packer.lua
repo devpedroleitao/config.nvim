@@ -21,8 +21,7 @@ return require('packer').startup(function(use)
     }
     use {
         "pmizio/typescript-tools.nvim",
-        requires = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
-    }
+        requires = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig"}, }
     use "nvim-lua/plenary.nvim" -- don't forget to add this one if you don't have it yet!
     use {
         "ThePrimeagen/harpoon",
@@ -42,7 +41,7 @@ return require('packer').startup(function(use)
         requires = {
             --- Uncomment the two plugins below if you want to manage the language servers from neovim
             { 'williamboman/mason.nvim' },
-            { 'williamboman/mason-lspconfig.nvim' },
+            { 'williamboman/mason-lspconfig.nvim', tag = 'v1.32.0' },
 
             { 'neovim/nvim-lspconfig' },
             { 'hrsh7th/nvim-cmp' },
