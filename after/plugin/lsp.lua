@@ -31,7 +31,21 @@ lsp_zero.on_attach(function(client, bufnr)
     vim.keymap.set("i", "<C-h>", function() vim.lsp.buf.signature_help() end, opts)
 
     vim.keymap.set({ 'n', 'x', 'v' }, 'gq', function()
-        conform.format({ bufnr = opts.buffer, lsp_fallback = true })
+        local mode = vim.fn.mode()
+
+        if mode == 'v' or mode == 'V' or mode == "\22" then
+            local start_line = vim.fn.line("v")
+            local end_line = vim.fn.line(".")
+            if start_line > end_line then
+                start_line, end_line = end_line, start_line
+            end
+            conform.format({
+                range = { start = { start_line - 1, 0 }, ['end'] = { end_line - 1, math.huge } },
+                lsp_fallback = true
+            })
+        else
+            conform.format({ bufnr = opts.buffer, lsp_fallback = true })
+        end
     end, opts)
 
 
